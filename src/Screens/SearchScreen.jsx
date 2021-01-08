@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import SearchBar from '../components/search-bar';
+import yelp from '../api/YelpAPI';
+
+import SearchBar from '../components/SearchBar';
 
 const SearchScreen = () => {
+  const [term, setTerm] = useState('');
+
   return (
     <View>
-      <SearchBar />
-      <Text>Search</Text>
+      <SearchBar
+        term={term}
+        onTermChange={setTerm}
+        onTermSubmit={() => searchApi(term)}
+      />
+      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      <Text>We have found {results.length} results</Text>
     </View>
   );
 };
