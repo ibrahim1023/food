@@ -21,7 +21,9 @@ export default () => {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    searchApi('cake');
+  }, []);
 
   return [searchApi, results, errorMessage];
 };
